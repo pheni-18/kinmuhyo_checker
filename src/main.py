@@ -1,4 +1,7 @@
-from const import SHEET_NAME, NAME_CELL
+from constants import SHEET_NAME, NAME_CELL
+from messages import output_message, Message
+from validator import Validator
+
 from openpyxl import load_workbook
 
 import argparse
@@ -34,14 +37,17 @@ def read_args():
 def main():
     file_path, month, year = read_args()
 
+    if not os.path.exists(file_path):
+        output_message(Message.FILE_NO_EXISTS_ERROR, file_path)
+        return
+
     file_name, file_ext = os.path.splitext(os.path.basename(file_path))
 
-    print(file_path)
-    print(month)
-    print(year)
+    if file_ext != '.xlsx':
+        output_message(Message.EXTENSION_ERROR, file_path)
+        return
 
-    print(file_name)
-    print(file_ext)
+    Validator.validate_file_name(file_name, year, month)
 
     workbook = load_workbook(file_path)
     sheet = workbook[SHEET_NAME]
