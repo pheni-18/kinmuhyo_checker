@@ -1,5 +1,11 @@
 # kintaihyo_checker
 
+## Install
+
+```bash
+$ pipenv install
+```
+
 ## Build
 
 ```bash
