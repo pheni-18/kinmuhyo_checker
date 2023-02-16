@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4282cc68ed4a27aae7559e32de513348693bdb7171cfca561c8e04f0a545f87e"
+            "sha256": "9c91040c419ac46c7b42f6a27059c40c6e424d606176e6222a2419c3ef6821f8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "version": "==0.17.3"
         },
+        "et-xmlfile": {
+            "hashes": [
+                "sha256:8eb9e2bc2f8c97e37a2dc85a09ecdcdec9d8a396530a6d5a33b30b9a92da0c5c",
+                "sha256:a2ba85d1d6a74ef63837eed693bcb89c3f752169b0e3e7ae5b16ca5e1b3deada"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==1.1.0"
+        },
         "macholib": {
             "hashes": [
                 "sha256:44c40f2cd7d6726af8fa6fe22549178d3a4dfecc35a9cd15ea916d9c83a688e0",
@@ -30,6 +38,14 @@
             ],
             "markers": "sys_platform == 'darwin'",
             "version": "==1.16.2"
+        },
+        "openpyxl": {
+            "hashes": [
+                "sha256:a0266e033e65f33ee697254b66116a5793c15fc92daf64711080000df4cfe0a8",
+                "sha256:f06d44e2c973781068bce5ecf860a09bcdb1c7f5ce1facd5e9aa82c92c93ae72"
+            ],
+            "index": "pypi",
+            "version": "==3.1.1"
         },
         "pyinstaller": {
             "hashes": [
