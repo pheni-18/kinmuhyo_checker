@@ -1,4 +1,4 @@
-from constants import SHEET_NAME, NAME_CELL, MONTH_CELL
+from constants import SHEET_NAME, NAME_CELL, MONTH_CELL, START_ROW, DAY_COLUMN, DAY_OF_WEEK_COLUMN
 from messages import output_message, Message
 from validator import Validator
 
@@ -59,6 +59,12 @@ def main():
 
     name = sheet.cell(row=NAME_CELL[0], column=NAME_CELL[1]).value
     validator.validate_name(name)
+
+    last_row = START_ROW + validator.last_day - 1
+    for row in range(START_ROW, last_row + 1):
+        dt = sheet.cell(row=row, column=DAY_COLUMN).value
+        day_of_week = sheet.cell(row=row, column=DAY_OF_WEEK_COLUMN).value
+        validator.validate_day_of_week(dt.day, day_of_week, (row, DAY_OF_WEEK_COLUMN))
 
 
 if __name__ == '__main__':

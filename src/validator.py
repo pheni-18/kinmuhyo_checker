@@ -1,9 +1,10 @@
 from constants import MONTH_CELL, NAME_CELL
 from messages import output_message, Message
-from utils import to_cell_name
+from utils import to_cell_name, to_weekday
 
 from datetime import datetime
 
+import calendar
 import re
 
 __all__ = (
@@ -18,6 +19,10 @@ class Validator:
     def __init__(self, year: int, month: int):
         self._year = year
         self._month = month
+
+    @property
+    def last_day(self) -> int:
+        return calendar.monthrange(self._year, self._month)[1]
 
     def validate_file_name(self, file_name: str):
         pattern = r'勤務表_.*_[0-9]{6}'
@@ -39,4 +44,12 @@ class Validator:
     def validate_name(self, name: str):
         if name is None:
             output_message(Message.NAME_ERROR, to_cell_name(NAME_CELL))
+            return
+
+    def validate_day_of_week(self, day: int, day_of_week: str, cell: tuple[int, int]):
+        # TODO: 存在しない日付チェック
+
+        dt = datetime(self._year, self._month, day)
+        if dt.weekday() != to_weekday(day_of_week):
+            output_message(Message.DAY_OF_WEEK_ERROR, to_cell_name(cell))
             return

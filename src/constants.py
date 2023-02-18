@@ -12,8 +12,21 @@ COLUMN_MAP = {
     9: 'I',
 }
 
-MONTH_CELL = (4, 1)  # A4
-NAME_CELL = (2, 7)  # G2
+DAY_OF_WEEK_MAP = {
+    '月': 0,
+    '火': 1,
+    '水': 2,
+    '木': 3,
+    '金': 4,
+    '土': 5,
+    '日': 6,
+}
+
+MONTH_CELL = (4, 1)
+NAME_CELL = (2, 7)
+DAY_COLUMN = 1
+DAY_OF_WEEK_COLUMN = 2
+START_ROW = 5
 
 
 MESSAGES = {

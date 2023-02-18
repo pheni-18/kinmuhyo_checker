@@ -1,11 +1,13 @@
-from constants import COLUMN_MAP
-
-from typing import Tuple
+from constants import COLUMN_MAP, DAY_OF_WEEK_MAP
 
 __all__ = (
     'to_cell_name',
 )
 
 
-def to_cell_name(c: Tuple[int, int]) -> str:
+def to_cell_name(c: tuple[int, int]) -> str:
     return f'{COLUMN_MAP[c[1]]}{c[0]}'
+
+
+def to_weekday(day_of_week: str) -> int:
+    return DAY_OF_WEEK_MAP[day_of_week]
