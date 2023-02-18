@@ -50,7 +50,7 @@ class Validator:
 
         return True
 
-    def validate_name(self, name: str) -> bool:
+    def validate_name(self, name: Optional[str]) -> bool:
         if name is None:
             output_message(Message.NAME_ERROR, to_cell_name(NAME_CELL))
             return False
