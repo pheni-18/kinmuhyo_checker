@@ -68,7 +68,7 @@ def main():
     sheet = workbook[SHEET_NAME]
 
     dt = from_excel(sheet.cell(row=MONTH_CELL[0], column=MONTH_CELL[1]).value)
-    res = validator.validate_month(dt)
+    res = validator.validate_year_month(dt)
     has_error = has_error or not res
 
     name = sheet.cell(row=NAME_CELL[0], column=NAME_CELL[1]).value

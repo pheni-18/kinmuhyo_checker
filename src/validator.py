@@ -43,9 +43,9 @@ class Validator:
 
         return True
 
-    def validate_month(self, dt: datetime) -> bool:
+    def validate_year_month(self, dt: datetime) -> bool:
         if self._year != dt.year or self._month != dt.month:
-            output_message(Message.MONTH_ERROR, to_cell_name(MONTH_CELL))
+            output_message(Message.YEAR_MONTH_ERROR, to_cell_name(MONTH_CELL))
             return False
 
         return True
