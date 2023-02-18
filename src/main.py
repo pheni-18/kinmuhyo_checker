@@ -1,8 +1,9 @@
-from constants import SHEET_NAME, NAME_CELL
+from constants import SHEET_NAME, NAME_CELL, MONTH_CELL
 from messages import output_message, Message
 from validator import Validator
 
 from openpyxl import load_workbook
+from openpyxl.utils.datetime import from_excel
 
 import argparse
 import datetime
@@ -47,12 +48,17 @@ def main():
         output_message(Message.EXTENSION_ERROR, file_path)
         return
 
-    Validator.validate_file_name(file_name, year, month)
+    validator = Validator(year, month)
+    validator.validate_file_name(file_name)
 
     workbook = load_workbook(file_path)
     sheet = workbook[SHEET_NAME]
+
+    dt = from_excel(sheet.cell(row=MONTH_CELL[0], column=MONTH_CELL[1]).value)
+    validator.validate_month(dt)
+
     name = sheet.cell(row=NAME_CELL[0], column=NAME_CELL[1]).value
-    print(name)
+    validator.validate_name(name)
 
 
 if __name__ == '__main__':
