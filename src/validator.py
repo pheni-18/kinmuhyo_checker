@@ -3,6 +3,7 @@ from messages import output_message, Message
 from utils import to_cell_name, to_weekday
 
 from datetime import datetime
+from typing import Optional
 
 import calendar
 import re
@@ -62,6 +63,17 @@ class Validator:
         dt = datetime(self._year, self._month, day)
         if dt.weekday() != to_weekday(day_of_week):
             output_message(Message.DAY_OF_WEEK_ERROR, to_cell_name(cell))
+            return False
+
+        return True
+
+    def validate_break_time(self, break_time: Optional[int], working_hours: int, cell: tuple[int, int]) -> bool:
+        if working_hours > 0 and break_time is None:
+            output_message(Message.BREAK_TIME_EMPTY_ERROR, to_cell_name(cell))
+            return False
+
+        if break_time is not None and break_time > working_hours:
+            output_message(Message.BREAK_TIME_OVER_ERROR, to_cell_name(cell))
             return False
 
         return True

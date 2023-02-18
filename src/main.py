@@ -1,4 +1,13 @@
-from constants import SHEET_NAME, NAME_CELL, MONTH_CELL, START_ROW, DAY_COLUMN, DAY_OF_WEEK_COLUMN
+from constants import (
+    SHEET_NAME,
+    NAME_CELL,
+    MONTH_CELL,
+    START_ROW,
+    DAY_COLUMN,
+    DAY_OF_WEEK_COLUMN,
+    BREAK_TIME_COLUMN,
+    WORKING_HOURS_COLUMN,
+)
 from messages import output_message, Message
 from validator import Validator
 
@@ -55,7 +64,7 @@ def main():
     res = validator.validate_file_name(file_name)
     has_error = has_error or not res
 
-    workbook = load_workbook(file_path)
+    workbook = load_workbook(file_path, data_only=True)
     sheet = workbook[SHEET_NAME]
 
     dt = from_excel(sheet.cell(row=MONTH_CELL[0], column=MONTH_CELL[1]).value)
@@ -71,6 +80,11 @@ def main():
         dt = sheet.cell(row=row, column=DAY_COLUMN).value
         day_of_week = sheet.cell(row=row, column=DAY_OF_WEEK_COLUMN).value
         res = validator.validate_day_of_week(dt.day, day_of_week, (row, DAY_OF_WEEK_COLUMN))
+        has_error = has_error or not res
+
+        break_time = sheet.cell(row=row, column=BREAK_TIME_COLUMN).value
+        working_hours = sheet.cell(row=row, column=WORKING_HOURS_COLUMN).value
+        res = validator.validate_break_time(break_time, working_hours, (row, BREAK_TIME_COLUMN))
         has_error = has_error or not res
 
     if not has_error:
