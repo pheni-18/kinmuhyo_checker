@@ -1,4 +1,4 @@
-# kintaihyo_checker
+# kinmuhyo_checker
 
 ## Install
 
@@ -9,5 +9,5 @@ $ pipenv install
 ## Build
 
 ```bash
-$ pipenv run pyinstaller --onefile --name kintaihyo-checker src/main.py
+$ pipenv run pyinstaller --onefile --name kinmuhyo-checker src/main.py
 ```
