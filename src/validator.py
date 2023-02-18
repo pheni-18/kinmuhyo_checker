@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import Optional
 
 import calendar
+import jpholiday
 import re
 
 __all__ = (
@@ -75,5 +76,15 @@ class Validator:
         if break_time is not None and break_time > working_hours:
             output_message(Message.BREAK_TIME_OVER_ERROR, to_cell_name(cell))
             return False
+
+        return True
+
+    def validate_holiday(self, day: int, working_hours: int, cell1: tuple[int, int], cell2: tuple[int, int]) -> bool:
+        dt = datetime(self._year, self._month, day)
+        if dt.weekday() == 5 or dt.weekday() == 6 or jpholiday.is_holiday(dt):
+            if working_hours > 0:
+                extra = f'{to_cell_name(cell1)}, {to_cell_name(cell2)}'
+                output_message(Message.HOLIDAY_WARNING, extra)
+                return False
 
         return True

@@ -5,6 +5,8 @@ from constants import (
     START_ROW,
     DAY_COLUMN,
     DAY_OF_WEEK_COLUMN,
+    WORKING_START_COLUMN,
+    WORKING_END_COLUMN,
     BREAK_TIME_COLUMN,
     WORKING_HOURS_COLUMN,
 )
@@ -85,6 +87,9 @@ def main():
         break_time = sheet.cell(row=row, column=BREAK_TIME_COLUMN).value
         working_hours = sheet.cell(row=row, column=WORKING_HOURS_COLUMN).value
         res = validator.validate_break_time(break_time, working_hours, (row, BREAK_TIME_COLUMN))
+        has_error = has_error or not res
+
+        res = validator.validate_holiday(dt.day, working_hours, (row, WORKING_START_COLUMN), (row, WORKING_END_COLUMN))
         has_error = has_error or not res
 
     if not has_error:

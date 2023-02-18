@@ -26,6 +26,8 @@ MONTH_CELL = (4, 1)
 NAME_CELL = (2, 7)
 DAY_COLUMN = 1
 DAY_OF_WEEK_COLUMN = 2
+WORKING_START_COLUMN = 3
+WORKING_END_COLUMN = 4
 BREAK_TIME_COLUMN = 7
 WORKING_HOURS_COLUMN = 8
 START_ROW = 5
@@ -46,6 +48,6 @@ MESSAGES = {
         'DAY_OF_WEEK_ERROR': 'VALIDATE ERROR: 日付と曜日が一致しません',
         'BREAK_TIME_EMPTY_ERROR': 'VALIDATE ERROR: 休憩時間が入力されていません',
         'BREAK_TIME_OVER_ERROR': 'VALIDATE ERROR: 休みの日に休憩時間が入力されています',
-        'HOLIDAY_WORNING': 'VALIDATE WARNING: 休日または祝日に勤務時間が入力されています'
+        'HOLIDAY_WARNING': 'VALIDATE WARNING: 休日または祝日に勤務時間が入力されています'
     },
 }
