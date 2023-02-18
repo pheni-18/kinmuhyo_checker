@@ -48,23 +48,33 @@ def main():
         output_message(Message.EXTENSION_ERROR, file_path)
         return
 
+    has_error = False
+
     validator = Validator(year, month)
-    validator.validate_file_name(file_name)
+
+    res = validator.validate_file_name(file_name)
+    has_error = has_error or not res
 
     workbook = load_workbook(file_path)
     sheet = workbook[SHEET_NAME]
 
     dt = from_excel(sheet.cell(row=MONTH_CELL[0], column=MONTH_CELL[1]).value)
-    validator.validate_month(dt)
+    res = validator.validate_month(dt)
+    has_error = has_error or not res
 
     name = sheet.cell(row=NAME_CELL[0], column=NAME_CELL[1]).value
-    validator.validate_name(name)
+    res = validator.validate_name(name)
+    has_error = has_error or not res
 
     last_row = START_ROW + validator.last_day - 1
     for row in range(START_ROW, last_row + 1):
         dt = sheet.cell(row=row, column=DAY_COLUMN).value
         day_of_week = sheet.cell(row=row, column=DAY_OF_WEEK_COLUMN).value
-        validator.validate_day_of_week(dt.day, day_of_week, (row, DAY_OF_WEEK_COLUMN))
+        res = validator.validate_day_of_week(dt.day, day_of_week, (row, DAY_OF_WEEK_COLUMN))
+        has_error = has_error or not res
+
+    if not has_error:
+        output_message(Message.SUCCEED)
 
 
 if __name__ == '__main__':
