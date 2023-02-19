@@ -41,15 +41,15 @@ MESSAGES = {
         'FILE_NO_EXISTS_ERROR': 'CRITICAL ERROR: ファイルが存在しません',
         'EXTENSION_ERROR': 'CRITICAL ERROR: 拡張子は .xlsx のみ使用できます',
     },
-    'VALIDATE': {
-        'FILE_NAME_ERROR': 'VALIDATE ERROR: ファイル名が間違っています',
-        'YEAR_MONTH_ERROR': 'VALIDATE ERROR: 年月が間違っています',
-        'NAME_ERROR': 'VALIDATE ERROR: 名前が入力されていません',
-        'DAY_EMPTY_ERROR': 'VALIDATE ERROR: 日付が入力されていません',
-        'DAY_NOT_EXISTS_ERROR': 'VALIDATE ERROR: 存在しない日付です',
-        'DAY_OF_WEEK_ERROR': 'VALIDATE ERROR: 日付と曜日が一致しません',
-        'BREAK_TIME_EMPTY_ERROR': 'VALIDATE ERROR: 休憩時間が入力されていません',
-        'BREAK_TIME_OVER_ERROR': 'VALIDATE ERROR: 休みの日に休憩時間が入力されています',
-        'HOLIDAY_WARNING': 'VALIDATE WARNING: 休日または祝日に勤務時間が入力されています'
+    'VALIDATION': {
+        'FILE_NAME_ERROR': 'VALIDATION ERROR: ファイル名が間違っています',
+        'YEAR_MONTH_ERROR': 'VALIDATION ERROR: 年月が間違っています',
+        'NAME_ERROR': 'VALIDATION ERROR: 名前が入力されていません',
+        'DAY_EMPTY_ERROR': 'VALIDATION ERROR: 日付が入力されていません',
+        'DAY_NOT_EXISTS_ERROR': 'VALIDATION ERROR: 存在しない日付です',
+        'DAY_OF_WEEK_ERROR': 'VALIDATION ERROR: 日付と曜日が一致しません',
+        'BREAK_TIME_EMPTY_ERROR': 'VALIDATION ERROR: 休憩時間が入力されていません',
+        'BREAK_TIME_OVER_ERROR': 'VALIDATION ERROR: 休みの日に休憩時間が入力されています',
+        'HOLIDAY_WARNING': 'VALIDATION WARNING: 休日または祝日に勤務時間が入力されています'
     },
 }
