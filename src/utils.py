@@ -2,6 +2,7 @@ from constants import COLUMN_MAP, DAY_OF_WEEK_MAP
 
 __all__ = (
     'to_cell_name',
+    'to_weekday',
 )
 
 
