@@ -46,6 +46,9 @@ $ pipenv install --dev
 
 ```bash
 $ pipenv run pyinstaller --onefile --name kinmuhyo-checker src/main.py
+$
+$ cd dist/
+$ tar zcvf {OUTPUT_DIR}/kinmuhyo-checker.tar.gz kinmuhyo-checker
 ```
 
 ### Test
