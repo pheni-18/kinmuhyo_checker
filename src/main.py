@@ -80,6 +80,11 @@ def main():
     last_row = START_ROW + validator.last_day - 1
     for row in range(START_ROW, last_row + 1):
         dt = sheet.cell(row=row, column=DAY_COLUMN).value
+        res = validator.validate_day(dt, (row, DAY_COLUMN))
+        has_error = has_error or not res
+        if not res:
+            continue
+
         day_of_week = sheet.cell(row=row, column=DAY_OF_WEEK_COLUMN).value
         res = validator.validate_day_of_week(dt.day, day_of_week, (row, DAY_OF_WEEK_COLUMN))
         has_error = has_error or not res

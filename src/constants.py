@@ -45,6 +45,8 @@ MESSAGES = {
         'FILE_NAME_ERROR': 'VALIDATE ERROR: ファイル名が間違っています',
         'YEAR_MONTH_ERROR': 'VALIDATE ERROR: 年月が間違っています',
         'NAME_ERROR': 'VALIDATE ERROR: 名前が入力されていません',
+        'DAY_EMPTY_ERROR': 'VALIDATE ERROR: 日付が入力されていません',
+        'DAY_NOT_EXISTS_ERROR': 'VALIDATE ERROR: 存在しない日付です',
         'DAY_OF_WEEK_ERROR': 'VALIDATE ERROR: 日付と曜日が一致しません',
         'BREAK_TIME_EMPTY_ERROR': 'VALIDATE ERROR: 休憩時間が入力されていません',
         'BREAK_TIME_OVER_ERROR': 'VALIDATE ERROR: 休みの日に休憩時間が入力されています',

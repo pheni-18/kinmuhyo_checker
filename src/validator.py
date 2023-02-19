@@ -58,9 +58,20 @@ class Validator:
 
         return True
 
-    def validate_day_of_week(self, day: int, day_of_week: str, cell: tuple[int, int]) -> bool:
-        # TODO: 存在しない日付チェック
+    def validate_day(self, dt: Optional[datetime], cell: tuple[int, int]) -> bool:
+        if dt is None:
+            output_message(Message.DAY_EMPTY_ERROR, to_cell_name(cell))
+            return False
 
+        try:
+            datetime(self._year, self._month, dt.day)
+        except ValueError:
+            output_message(Message.DAY_NOT_EXISTS_ERROR, to_cell_name(cell))
+            return False
+
+        return True
+
+    def validate_day_of_week(self, day: int, day_of_week: str, cell: tuple[int, int]) -> bool:
         dt = datetime(self._year, self._month, day)
         if dt.weekday() != to_weekday(day_of_week):
             output_message(Message.DAY_OF_WEEK_ERROR, to_cell_name(cell))
