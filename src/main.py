@@ -34,7 +34,7 @@ def read_args():
         choices=month_choices, help='target month')
 
     default_year = now.year
-    year_choices = [i for i in range(1970, now.year + 2)]
+    year_choices = [i for i in range(2020, now.year + 2)]
     parser.add_argument('-y', '--year', type=int, default=default_year,
         choices=year_choices, help='target year')
 
